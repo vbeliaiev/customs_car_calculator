@@ -6,3 +6,7 @@ gem 'sinatra', :github => 'sinatra/sinatra'
 gem 'puma'
 
 gem 'slim'
+gem 'sass'
+
+gem 'sinatra-asset-pipeline', '~> 2.2.0'
+
