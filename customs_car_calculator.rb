@@ -1,8 +1,10 @@
-require 'rubygems'
-require 'sinatra'
+require 'sinatra/base'
 
-get '/' do
-  'Hello world!'
+class CustomsCarCalculator < Sinatra::Base
+  get '/' do
+    'Hello world!'
+  end
+  
+  run! if app_file == $0
 end
-
 
