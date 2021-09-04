@@ -7,10 +7,78 @@ html lang="en"
     meta content="Customs Car Calculator" name="description" /
     meta content="Vladyslav Beliaiev" name="author" /
     link rel="stylesheet" href="#{stylesheet_path 'application'}"
+    script src="#{javascript_path 'application'}"
     title Ukraine customs car calculator
   body
+    #usd_rate style=("display: none;") = @usd_rate
     main.container-fluid
       .row
-        .col-md-3
-        .col-md-6
-          h1 Hello from slim view
+        .col-lg-3
+        .col-lg-6.calculator.border
+          .row
+            .col-sm-12.py-2
+              h4 Калькулятор растаможки авто в Украине
+          .row
+            .col-sm-6.py-2
+              .btn-group aria-label=("Basic radio toggle button group") role="group"
+                input#btnradio1.btn-check autocomplete="off" checked="" name="btnradio" type="radio" /
+                label.btn.btn-outline-primary for="btnradio1"  Бензин
+                input#btnradio3.btn-check autocomplete="off" name="btnradio" type="radio" /
+                label.btn.btn-outline-primary for="btnradio3"  Дизель
+            .col-sm-6.py-2
+              .btn-group aria-label=("Basic radio toggle button group") role="group1"
+                input#btnradio1-1.btn-check autocomplete="off" checked="" name="btnradio1" type="radio" /
+                label.btn.btn-outline-primary for="btnradio1-1"  ЕС
+                input#btnradio3-3.btn-check autocomplete="off" name="btnradio1" type="radio" /
+                label.btn.btn-outline-primary for="btnradio3-3"  США
+          .row
+            .col-sm-12.py-4.sliders
+              .row
+                .col.age
+                  h6.py-4 Возраст автомобиля
+                  /! most basic, used for Knobs demo
+                  .range-slider style=("--min:0; --max:15; --step:1; --value:0; --text-value:\"0\";")
+                    input max="15" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))" step="1" type="range" value="0" /
+                    output
+                    .range-slider__progress
+              .row
+                .col.price
+                  h6.py-4 Цена автомобиля за рубежом
+                  /! Single slider (with shadows)
+                  .range-slider.grad style=("--min:0; --max:25000; --step:100; --value:2000; --text-value:\"2000\"; --prefix:\"€\"")
+                    input max="25000" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify((+this.value).toLocaleString()))" step="100" type="range" value="2000" /
+                    output
+                    .range-slider__progress
+
+              .row
+                .col.engine-size
+                  h6.py-4 Объем двигателя
+                  /! most basic, used for Knobs demo
+                  .range-slider style=("--min:0; --max:3; --step:0.2; --value:0; --text-value:\"0\";")
+                    input max="3" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))" step="0.2" type="range" value="0" /
+                    output
+                    .range-slider__progress
+
+          .row
+            .col-sm-6
+              h5 Стоимость платежей:
+            .col-sm-6
+              h4#total_charges
+
+            .col-sm-6
+              h5 Конечная стоимость автомобиля:
+            .col-sm-6
+              h3#total_price
+          hr
+          .row
+            table.table
+              tbody
+                tr
+                  th scope="row" Ввозная пошлина:
+                  td#poshlina
+                tr
+                  th scope="row" Акзизный сбор:
+                  td#akciz
+                tr
+                  th scope="row" НДС:
+                  td#tva

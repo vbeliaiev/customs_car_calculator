@@ -8,5 +8,7 @@ gem 'puma'
 gem 'slim'
 gem 'sass'
 
+gem 'nokogiri', '~> 1.12', '>= 1.12.4'
+
 gem 'sinatra-asset-pipeline', '~> 2.2.0'
 

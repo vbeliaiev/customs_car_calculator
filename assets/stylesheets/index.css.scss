@@ -1,3 +1,13 @@
 body {
   background: azure;
+
+  .calculator {
+    background: #ffffff;
+
+    .price, .age, .engine-size {
+      .range-slider {
+        width: 100%;
+      }
+    }
+  }
 }
