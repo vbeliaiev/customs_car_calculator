@@ -6,7 +6,7 @@ require 'nokogiri'
 class CustomsCarCalculator < Sinatra::Base
   register Sinatra::AssetPipeline
 
-  set :assets_precompile, %w[application.css application.js]
+  set :assets_precompile, %w[application.css application.js favicon.ico]
 
   configure do
     %w[stylesheets javascripts images].each do |assets_dir|

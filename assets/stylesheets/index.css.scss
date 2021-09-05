@@ -9,5 +9,21 @@ body {
         width: 100%;
       }
     }
+
+    table.table-calc-result>thead>tr>th,
+    table.table-calc-result>tbody>tr>th,
+    table.table-calc-result>tfoot>tr>th,
+    table.table-calc-result>thead>tr>td,
+    table.table-calc-result>tbody>tr>td,
+    table.table-calc-result>tfoot>tr>td{
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+    table.table-calc-result > tbody > tr.customs-total-charges-row {
+      th, td {
+        padding-top: 10px;
+      }
+    }
   }
 }

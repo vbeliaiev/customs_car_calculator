@@ -8,37 +8,32 @@ html lang="en"
     meta content="Vladyslav Beliaiev" name="author" /
     link rel="stylesheet" href="#{stylesheet_path 'application'}"
     script src="#{javascript_path 'application'}"
-    title Ukraine customs car calculator
+    link href="#{image_path 'favicon'}" rel=("shortcut icon") type="image/x-icon" /
+    title = "Auto Calc - Калькулятор растаможки авто #{DateTime.now.year}"
   body
     #usd_rate style=("display: none;") = @usd_rate
     main.container-fluid
       .row
         .col-lg-3
-        .col-lg-6.calculator.border
+        .col-lg-6.calculator.border.border-bottom-0
           .row
             .col-sm-12.py-2
-              h4 Калькулятор растаможки авто в Украине
+              h4 = "Калькулятор растаможки авто в Украине #{DateTime.now.year}"
           .row
-            .col-sm-6.py-2
+            .col
               .btn-group aria-label=("Basic radio toggle button group") role="group"
-                input#btnradio1.btn-check autocomplete="off" checked="" name="btnradio" type="radio" /
-                label.btn.btn-outline-primary for="btnradio1"  Бензин
-                input#btnradio3.btn-check autocomplete="off" name="btnradio" type="radio" /
-                label.btn.btn-outline-primary for="btnradio3"  Дизель
-            .col-sm-6.py-2
-              .btn-group aria-label=("Basic radio toggle button group") role="group1"
-                input#btnradio1-1.btn-check autocomplete="off" checked="" name="btnradio1" type="radio" /
-                label.btn.btn-outline-primary for="btnradio1-1"  ЕС
-                input#btnradio3-3.btn-check autocomplete="off" name="btnradio1" type="radio" /
-                label.btn.btn-outline-primary for="btnradio3-3"  США
+                input#btnradio_gasoline.btn-check autocomplete="off" checked="" name="engine-type" value="0" type="radio" /
+                label.btn.btn-outline-primary for="btnradio_gasoline"  Бензин
+                input#btnradio_diesel.btn-check autocomplete="off" name="engine-type" value="1" type="radio" /
+                label.btn.btn-outline-primary for="btnradio_diesel"  Дизель
           .row
-            .col-sm-12.py-4.sliders
+            .col-sm-12.sliders
               .row
                 .col.age
                   h6.py-4 Возраст автомобиля
                   /! most basic, used for Knobs demo
                   .range-slider style=("--min:0; --max:15; --step:1; --value:0; --text-value:\"0\";")
-                    input max="15" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))" step="1" type="range" value="0" /
+                    input max="15" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(formatYear(this.value)))" step="1" type="range" value="0" /
                     output
                     .range-slider__progress
               .row
@@ -59,26 +54,34 @@ html lang="en"
                     output
                     .range-slider__progress
 
-          .row
-            .col-sm-6
-              h5 Стоимость платежей:
-            .col-sm-6
-              h4#total_charges
-
-            .col-sm-6
-              h5 Конечная стоимость автомобиля:
-            .col-sm-6
-              h3#total_price
-          hr
-          .row
-            table.table
+          .row.py-4
+            table.table.table-borderless.table-calc-result
               tbody
+                tr.border-bottom
+                  th scope="row" Конечная стоимость автомобиля:
+                  td
+                    span.fs-5.text-success#total_price_eur
+                    span.fs-6.text-secondary#total_price_usd
+                tr.customs-total-charges-row
+                  th scope="row" Общая стоимость таможенных платежей:
+                  td.fw-bold#total_charges
                 tr
-                  th scope="row" Ввозная пошлина:
+                  td scope="row" Ввозная пошлина:
                   td#poshlina
                 tr
-                  th scope="row" Акзизный сбор:
+                  td scope="row" Акзизный сбор:
                   td#akciz
                 tr
-                  th scope="row" НДС:
+                  td scope="row" НДС:
                   td#tva
+
+    footer
+      .container-fluid
+        .row
+          .col-lg-3
+          .col-lg-6.bg-white.border.border-top-0
+              .col-lg-12.d-flex.justify-content-center
+                a href= '' Подробнее о калькуляторе
+              .col-lg-12.d-flex.justify-content-center
+                span = "© #{DateTime.now.year}"
+
