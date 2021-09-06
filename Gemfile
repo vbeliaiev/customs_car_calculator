@@ -14,4 +14,3 @@ gem 'sinatra-asset-pipeline', '~> 2.2.0'
 
 gem 'i18n'
 
-gem 'pry'

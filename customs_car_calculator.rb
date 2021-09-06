@@ -3,7 +3,6 @@ require 'sinatra/asset_pipeline'
 require 'net/http'
 require 'nokogiri'
 require 'i18n'
-require 'pry'
 
 class CustomsCarCalculator < Sinatra::Base
   register Sinatra::AssetPipeline
