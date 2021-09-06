@@ -11,5 +11,5 @@ ru:
     total_cost_of_customs_duties: "Общая стоимость таможенных платежей:"
     import_duty: "Ввозная пошлина:"
     excise_tax: "Акзизный сбор:"
-    vat: "НДС"
+    vat: "НДС:"
   link_to_details: "Подробнее о калькуляторе"

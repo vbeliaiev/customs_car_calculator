@@ -11,5 +11,5 @@ ua:
      total_cost_of_customs_duties: "Загальна вартість митних платежів:"
      import_duty: "Ввізне мито:"
      excise_tax: "Акзізний збір:"
-     vat: "ПДВ"
+     vat: "ПДВ:"
    link_to_details: Детальніше про калькулятор
