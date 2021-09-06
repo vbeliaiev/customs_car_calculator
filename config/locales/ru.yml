@@ -1,0 +1,15 @@
+ru:
+  calculator:
+    title: "Калькулятор растаможки авто в Украине"
+    engine_type:
+      gasoline: "Бензин"
+      diesel: "Дизель"
+    age_of_car: "Возраст автомобиля"
+    car_price_abroad: "Цена автомобиля за рубежом"
+    engine_volume: "Объем двигателя"
+    final_car_cost: "Конечная стоимость автомобиля:"
+    total_cost_of_customs_duties: "Общая стоимость таможенных платежей:"
+    import_duty: "Ввозная пошлина:"
+    excise_tax: "Акзизный сбор:"
+    vat: "НДС:"
+  link_to_details: "Подробнее о калькуляторе"

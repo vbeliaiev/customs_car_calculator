@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+    // Terms:
+    // excise tax - Акциз
+    // duty - Пошлина
+    // base rate - Базовая ставка
+
     // Inputs
     const ageInput = document.querySelector('.age input');
     const priceInput = document.querySelector('.price input');
@@ -9,12 +14,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const totalPriceEurElement = document.querySelector('#total_price_eur');
     const totalPriceUsdElement = document.querySelector('#total_price_usd');
 
-    const poshlinaElement = document.querySelector('#poshlina');
-    const akcizElement = document.querySelector('#akciz');
+    const dutyElement = document.querySelector('#duty');
+    const exciseTaxElement = document.querySelector('#excise_tax');
     const tvaElement = document.querySelector('#tva');
-
-    // Baz stavka is always 50 for engines < 3 litres
-    const bazStavka = 50;
 
     // Usd to eur rate
     const usdRate =  parseFloat(document.querySelector('#usd_rate').textContent);
@@ -27,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function getEngineType() {
         return document.querySelector("input[name='engine-type']:checked").value
     }
+
     function getAge() {
         return parseFloat(ageInput.value)
     }
@@ -60,24 +63,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         return result;
     }
-    function calculateAkciz() {
+    function calculateExciseTax() {
         return calculateBaseRate() * getAge() * getEngineSize()
     }
 
-    function calculatePoshlina() {
+    function calculateDuty() {
         return 0.055 * getPrice();
     }
 
     function calculateTva() {
-        return 0.2 * (getPrice() + calculateAkciz() + calculatePoshlina());
+        return 0.2 * (getPrice() + calculateExciseTax() + calculateDuty());
     }
 
     function calculateCharges() {
-        var akciz = calculateAkciz();
-        var poshlina = calculatePoshlina();
+        var exciseTax = calculateExciseTax();
+        var duty = calculateDuty();
         var tva = calculateTva();
 
-        return poshlina + akciz + tva;
+        return duty + exciseTax + tva;
     }
 
     // Refresh
@@ -89,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         totalPriceEurElement.textContent = `€${totalPriceEur}`
         totalPriceUsdElement.textContent = ` ($${totalPriceUsd})`
 
-        poshlinaElement.textContent = `€ ${ Math.round(calculatePoshlina()) }`;
-        akcizElement.textContent = `€ ${Math.round(calculateAkciz()) }`;
+        dutyElement.textContent = `€ ${ Math.round(calculateDuty()) }`;
+        exciseTaxElement.textContent = `€ ${Math.round(calculateExciseTax()) }`;
         tvaElement.textContent = `€ ${Math.round(calculateTva())}`;
         return null;
     }

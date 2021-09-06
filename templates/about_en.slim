@@ -1,0 +1,66 @@
+.row
+  .col-lg-3
+  .col-lg-6.calculator.border.border-top-0
+    .row
+      .col-lg-12.border-top.py-3
+        h5 How does the calculator work?
+      .col-lg-12
+        span The calculator calculates the amount of the cost of customs payments based on these indicators:
+        ul
+          li Customs duty (duty)
+          li Excise tax
+          li Value Added Tax
+      .col-lg-12
+        p
+          span.fw-bold Customs Tax (Duty)
+          span &nbsp;is the total rate that only depends on the car's value (appraised value). The amount of the duty is 5.5% of the cost of the car.
+          span &nbsp; For example, for a car worth 1000 euros, the amount of duty will be 0.055 * 1000 = 55 euros
+      .col-lg-12
+        p
+          span.fw-bold Excise tax
+          span&nbsp; calculates by the formula:
+        p.border.d-flex.justify-content-center.p-2
+          span.text-decoration-underline Base rate
+          span.fw-bold &nbsp; * &nbsp;
+          span.text-decoration-underline Engine displacement (cm3) / 1000
+          span.fw-bold &nbsp; * &nbsp;
+          span.text-decoration-underline Age factor
+        p
+          span.text-decoration-underline Base rate for gasoline engines:
+          ul
+            li 50 - if the engine volume is <3 liters
+            li 100 - if engine capacity> 3 liters
+        p
+          span.text-decoration-underline Base rate for diesel engines:
+          ul
+            li 75 - if engine volume <3 liters
+            li 150 - if engine capacity> 3 liters
+        p
+          span.text-decoration-underline Age factor
+          span &nbsp; - vehicle age. It can be from 1 to 15 (for cars over 15 years old)
+      .col-lg-12
+        p
+          span.fw-bold Value Added Tax (VAT)
+          span &nbsp; - 20%
+        p
+          span It is important to note that VAT is calculated not on the price that was paid when purchasing the car, but on the amount that we calculate using the formula:
+        .col.d-flex.justify-content-end.border
+          .col-lg-6.ps-2
+            span.text-break
+              span.text-decoration-underline Negotiated contract value
+              span.fw-light.fst-italic
+                | &nbsp; (no less than the customs value with the customs information base)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp; + &nbsp;
+          .col-lg-2
+            span.text-decoration-underline Customs duty
+            span.fw-light.fst-italic
+              | &nbsp; (duty)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp; + &nbsp;
+          .col-lg-2.pe-2
+            span.text-decoration-underline Excise tax
+      .col-lg-12.py-4
+        span
+          | If you want to leave a review or find an inaccuracy in the calculator, our contact address: &nbsp;
+        a href = "mailto: auto-calc@gmail.com" auto-calc@gmail.com

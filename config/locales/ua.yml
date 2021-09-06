@@ -1,0 +1,15 @@
+ua:
+   calculator:
+     title: "Калькулятор розмитнення авто в Україні"
+     engine_type:
+       gasoline: "Бензин"
+       diesel: "Дизель"
+     age_of_car: "Вік автомобіля"
+     car_price_abroad: "Ціна автомобіля за кордоном"
+     engine_volume: "Об'єм двигуна"
+     final_car_cost: "Кінцева вартість автомобіля:"
+     total_cost_of_customs_duties: "Загальна вартість митних платежів:"
+     import_duty: "Ввізне мито:"
+     excise_tax: "Акзізний збір:"
+     vat: "ПДВ:"
+   link_to_details: Детальніше про калькулятор

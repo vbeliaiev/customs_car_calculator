@@ -1,87 +1,58 @@
-doctype html
-html lang="en"
-  head
-    meta charset="utf-8" /
-    meta content="IE=edge" http-equiv="X-UA-Compatible" /
-    meta content="width=device-width, initial-scale=1" name="viewport" /
-    meta content="Customs Car Calculator" name="description" /
-    meta content="Vladyslav Beliaiev" name="author" /
-    link rel="stylesheet" href="#{stylesheet_path 'application'}"
-    script src="#{javascript_path 'application'}"
-    link href="#{image_path 'favicon'}" rel=("shortcut icon") type="image/x-icon" /
-    title = "Auto Calc - Калькулятор растаможки авто #{DateTime.now.year}"
-  body
-    #usd_rate style=("display: none;") = @usd_rate
-    main.container-fluid
-      .row
-        .col-lg-3
-        .col-lg-6.calculator.border.border-bottom-0
-          .row
-            .col-sm-12.py-2
-              h4 = "Калькулятор растаможки авто в Украине #{DateTime.now.year}"
-          .row
-            .col
-              .btn-group aria-label=("Basic radio toggle button group") role="group"
-                input#btnradio_gasoline.btn-check autocomplete="off" checked="" name="engine-type" value="0" type="radio" /
-                label.btn.btn-outline-primary for="btnradio_gasoline"  Бензин
-                input#btnradio_diesel.btn-check autocomplete="off" name="engine-type" value="1" type="radio" /
-                label.btn.btn-outline-primary for="btnradio_diesel"  Дизель
-          .row
-            .col-sm-12.sliders
-              .row
-                .col.age
-                  h6.py-4 Возраст автомобиля
-                  /! most basic, used for Knobs demo
-                  .range-slider style=("--min:0; --max:15; --step:1; --value:0; --text-value:\"0\";")
-                    input max="15" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(formatYear(this.value)))" step="1" type="range" value="0" /
-                    output
-                    .range-slider__progress
-              .row
-                .col.price
-                  h6.py-4 Цена автомобиля за рубежом
-                  /! Single slider (with shadows)
-                  .range-slider.grad style=("--min:0; --max:25000; --step:100; --value:2000; --text-value:\"2000\"; --prefix:\"€\"")
-                    input max="25000" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify((+this.value).toLocaleString()))" step="100" type="range" value="2000" /
-                    output
-                    .range-slider__progress
-
-              .row
-                .col.engine-size
-                  h6.py-4 Объем двигателя
-                  /! most basic, used for Knobs demo
-                  .range-slider style=("--min:0; --max:3; --step:0.2; --value:0; --text-value:\"0\";")
-                    input max="3" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))" step="0.2" type="range" value="0" /
-                    output
-                    .range-slider__progress
-
-          .row.py-4
-            table.table.table-borderless.table-calc-result
-              tbody
-                tr.border-bottom
-                  th scope="row" Конечная стоимость автомобиля:
-                  td
-                    span.fs-5.text-success#total_price_eur
-                    span.fs-6.text-secondary#total_price_usd
-                tr.customs-total-charges-row
-                  th scope="row" Общая стоимость таможенных платежей:
-                  td.fw-bold#total_charges
-                tr
-                  td scope="row" Ввозная пошлина:
-                  td#poshlina
-                tr
-                  td scope="row" Акзизный сбор:
-                  td#akciz
-                tr
-                  td scope="row" НДС:
-                  td#tva
-
-    footer
-      .container-fluid
+.row
+  .col-lg-3
+  .col-lg-6.calculator.border.border-top-0
+    .row
+      .col
+        .btn-group aria-label=("Basic radio toggle button group") role="group"
+          input#btnradio_gasoline.btn-check autocomplete="off" checked="" name="engine-type" value="0" type="radio" /
+          label.btn.btn-outline-primary for="btnradio_gasoline"  #{I18n.t("calculator.engine_type.gasoline")}
+          input#btnradio_diesel.btn-check autocomplete="off" name="engine-type" value="1" type="radio" /
+          label.btn.btn-outline-primary for="btnradio_diesel"  #{I18n.t("calculator.engine_type.diesel")}
+    .row
+      .col-sm-12.sliders
         .row
-          .col-lg-3
-          .col-lg-6.bg-white.border.border-top-0
-              .col-lg-12.d-flex.justify-content-center
-                a href= '' Подробнее о калькуляторе
-              .col-lg-12.d-flex.justify-content-center
-                span = "© #{DateTime.now.year}"
+          .col.age
+            h6.py-4= I18n.t("calculator.age_of_car")
+            /! most basic, used for Knobs demo
+            .range-slider style=("--min:0; --max:15; --step:1; --value:0; --text-value:\"0\";")
+              input max="15" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(formatYear(this.value)))" step="1" type="range" value="0" /
+              output
+              .range-slider__progress
+        .row
+          .col.price
+            h6.py-4= I18n.t("calculator.car_price_abroad")
+            /! Single slider (with shadows)
+            .range-slider.grad style=("--min:0; --max:25000; --step:100; --value:2000; --text-value:\"2000\"; --prefix:\"€\"")
+              input max="25000" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify((+this.value).toLocaleString()))" step="100" type="range" value="2000" /
+              output
+              .range-slider__progress
 
+        .row
+          .col.engine-size
+            h6.py-4= I18n.t("calculator.engine_volume")
+            /! most basic, used for Knobs demo
+            .range-slider style=("--min:0; --max:3; --step:0.2; --value:0; --text-value:\"0\";")
+              input max="3" min="0" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))" step="0.2" type="range" value="0" /
+              output
+              .range-slider__progress
+
+    .row.py-4
+      table.table.table-borderless.table-calc-result
+        tbody
+          tr.border-bottom
+            th scope="row" = I18n.t("calculator.final_car_cost")
+            td
+              span.fs-5.text-success#total_price_eur
+              span.fs-6.text-secondary#total_price_usd
+          tr.customs-total-charges-row
+            th scope="row" = I18n.t("calculator.total_cost_of_customs_duties")
+            td.fw-bold#total_charges
+          tr
+            td scope="row" = I18n.t("calculator.import_duty")
+            td#duty
+          tr
+            td scope="row" = I18n.t("calculator.excise_tax")
+            td#excise_tax
+          tr
+            td scope="row" = I18n.t("calculator.vat")
+            td#tva

@@ -20,9 +20,15 @@ GEM
     concurrent-ruby (1.1.9)
     execjs (2.8.1)
     ffi (1.15.4)
+    i18n (1.8.10)
+      concurrent-ruby (~> 1.0)
+    mini_portile2 (2.6.1)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
+    nokogiri (1.12.4)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     nokogiri (1.12.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.12.4-x86_64-linux)
@@ -60,10 +66,12 @@ GEM
     tilt (2.0.10)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
+  i18n
   nokogiri (~> 1.12, >= 1.12.4)
   puma
   sass
@@ -72,7 +80,7 @@ DEPENDENCIES
   slim
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 2.7.4p191
 
 BUNDLED WITH
    2.2.27

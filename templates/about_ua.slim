@@ -1,0 +1,66 @@
+.row
+  .col-lg-3
+  .col-lg-6.calculator.border.border-top-0
+    .row
+      .col-lg-12.border-top.py-3
+        h5 Як працює калькулятор?
+      .col-lg-12
+        span Калькулятор вважає суму вартості митних платежів на основі даних показників:
+        ul
+          li Митний збір (мито)
+          li Акцизний податок
+          li Податок на додану вартість
+      .col-lg-12
+        p
+          span.fw-bold Митний збір (мито)
+          span - це загальна ставка, яка залежить тільки від вартості автомобіля (оціночної вартості). Розмір мита - 5,5% від вартості авто.
+          span &nbsp; Наприклад, для автомобіля вартістю 1000 євро, розмір мита становитиме 0,055 * 1000 = 55 євро
+      .col-lg-12
+        p
+          span.fw-bold Aкцізний податок
+          span &nbsp;обчислюється за формулою:
+        p.border.d-flex.justify-content-center.p-2
+          span.text-decoration-underline Базова ставка
+          span.fw-bold &nbsp; * &nbsp;
+          span.text-decoration-underline Об'єм двигуна (см3) / 1000
+          span.fw-bold &nbsp; * &nbsp;
+          span.text-decoration-underline Коефіцієнт віку
+        p
+          span.text-decoration-underline Базова ставка для бензинових двигунів:
+          ul
+            li 50 - якщо обсяг двигуна <3 літри
+            li 100 - якщо обсяг двигуна> 3 літрів
+        p
+          span.text-decoration-underline Базова ставка для дизельних двигунів:
+          ul
+            li 75 - якщо обсяг двигуна <3 літри
+            li 150 - якщо обсяг двигуна> 3 літрів
+        p
+          span.text-decoration-underline Коефіцієнт віку
+          span &nbsp; - вік автомобіля. Він може бути від 1 до 15 (для автомобілів старше 15 років)
+      .col-lg-12
+        p
+          span.fw-bold Податок на додану вартість (ПДВ)
+          span &nbsp; - 20%
+        p
+          span Важливо відзначити, що ПДВ розраховується нема на ціну, яка була сплачена при придбанні автомобіля, а на суму, яку розраховуємо за формулою:
+        .col.d-flex.justify-content-end.border
+          .col-lg-6.ps-2
+            span.text-break
+              span.text-decoration-underline Договірна контрактна вартість
+              span.fw-light.fst-italic
+                | &nbsp; (не менш, ніж митна вартість з інформаційною базою митниці)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp; + &nbsp;
+          .col-lg-2
+            span.text-decoration-underline Митний збір
+            span.fw-light.fst-italic
+              | &nbsp; (Мито)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp;+&nbsp;
+          .col-lg-2.pe-2
+            span.text-decoration-underline Акцизний податок
+      .col-lg-12.py-4
+        span
+          | Якщо Ви хочете залишити відгук або знайшли неточність в калькуляторі, наш контактну адресу: &nbsp;
+        a href = "mailto: auto-calc@gmail.com" auto-calc@gmail.com

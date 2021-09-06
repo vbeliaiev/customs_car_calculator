@@ -1,0 +1,66 @@
+.row
+  .col-lg-3
+  .col-lg-6.calculator.border.border-top-0
+    .row
+      .col-lg-12.border-top.py-3
+        h5 Как работает калькулятор?
+      .col-lg-12
+        span Калькулятор считает сумму стоимости таможенных платежей на основе данных показателей:
+        ul
+          li Таможенный сбор (пошлина)
+          li Акцизный налог
+          li Налог на добавленную стоимость
+      .col-lg-12
+        p
+          span.fw-bold Таможенный сбор (пошлина)
+          span  - это общая ставка, которая зависит только от стоимости автомобиля (оценочной стоимости). Размер пошлины - 5,5% от стоимости авто.
+          span &nbsp;К примеру, для автомобиля стоимостью 1000 евро, размер пошлины будет составлять 0,055 * 1000 = 55 евро
+      .col-lg-12
+        p
+          span.fw-bold Aкцизный налог
+          span  считается по формуле:
+        p.border.d-flex.justify-content-center.p-2
+          span.text-decoration-underline Базовая ставка
+          span.fw-bold &nbsp;*&nbsp;
+          span.text-decoration-underline  Объем двигателя (см3) / 1000
+          span.fw-bold &nbsp;*&nbsp;
+          span.text-decoration-underline  Коэффициент возраста
+        p
+          span.text-decoration-underline Базовая ставка для бензиновых двигателей:
+          ul
+            li 50 - если объем двигателя < 3 литра
+            li 100 - если объем двигателя > 3 литров
+        p
+          span.text-decoration-underline Базовая ставка для дизельных двигателей:
+          ul
+            li 75 - если объем двигателя < 3 литра
+            li 150 - если объем двигателя > 3 литров
+        p
+          span.text-decoration-underline Коэффициент возраста
+          span &nbsp;- возраст автомобиля. Он может быть от 1 до 15 (для автомобилей старше 15 лет)
+      .col-lg-12
+        p
+          span.fw-bold Налог на добавленную стоимость (НДС)
+          span &nbsp; - 20%
+        p
+          span Важно отметить, что НДС рассчитывается не на цену, которая была уплачена при приобретении автомобиля, а на сумму, которую рассчитываем по формуле:
+        .col.d-flex.justify-content-end.border
+          .col-lg-6.ps-2
+            span.text-break
+              span.text-decoration-underline Договорная контрактная стоимость
+              span.fw-light.fst-italic
+                | &nbsp;(не меньше, чем таможенная стоимость с информационной базой таможни)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp;+&nbsp;
+          .col-lg-2
+            span.text-decoration-underline Таможенный сбор
+            span.fw-light.fst-italic
+              | &nbsp; (пошлина)
+          .col-lg-1.px-1
+            span.fw-bold &nbsp;+&nbsp;
+          .col-lg-2.pe-2
+            span.text-decoration-underline Акцизный налог
+      .col-lg-12.py-4
+        span
+          | Если Вы хотите оставить отзыв или нашли неточность в калькуляторе, наш контактный адрес:&nbsp;
+        a href="mailto:auto-calc@gmail.com" auto-calc@gmail.com

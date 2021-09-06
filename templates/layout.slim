@@ -1,0 +1,44 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="Customs Car Calculator" name="description" /
+    meta content="Vladyslav Beliaiev" name="author" /
+    link rel="stylesheet" href="#{stylesheet_path 'application'}"
+    script src="#{javascript_path 'application'}"
+    link href="#{image_path 'favicon'}" rel=("shortcut icon") type="image/x-icon" /
+    title = "Auto Calc - Калькулятор растаможки авто #{DateTime.now.year}"
+  body.bg-light
+    header.container-fluid
+      .row
+        .col-lg-3
+        .col-lg-6.calculator.border.border-bottom-0
+          .row
+            .col-lg-12.d-flex.justify-content-end
+              span
+                a href= "#{localized_url(request.path_info, 'ua')}" ua
+                span &nbsp;|&nbsp;
+              span
+                a href= "#{localized_url(request.path_info, 'ru')}" ru
+                span &nbsp;|&nbsp;
+              span
+                a href= "#{localized_url(request.path_info, 'en')}" en
+          .row
+            .col-lg-12.py-2
+              a href= "/#{I18n.locale}"
+                img.logo alt="logo" src="#{image_path 'logo'}" /
+              p.h4.title-text = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
+    #usd_rate style=("display: none;") = @usd_rate
+    main.container-fluid
+      == yield
+    footer
+      .container-fluid
+        .row
+          .col-lg-3
+          .col-lg-6.bg-white.border.border-top-0
+            .col-lg-12.d-flex.justify-content-center
+              a href= "/#{I18n.locale}/about" #{I18n.t(:link_to_details)}
+            .col-lg-12.d-flex.justify-content-center
+              span = "© #{DateTime.now.year}"

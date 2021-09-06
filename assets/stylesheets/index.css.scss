@@ -1,6 +1,15 @@
 body {
   background: azure;
 
+  header {
+    img.logo {
+      width: 20%;
+      float: left;
+    }
+    .title-text {
+      margin-left: 23%;
+    }
+  }
   .calculator {
     background: #ffffff;
 

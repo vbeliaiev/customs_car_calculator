@@ -1,0 +1,15 @@
+en:
+   calculator:
+     title: "Calculator of customs clearance of cars in Ukraine"
+     engine_type:
+       gasoline: "Gasoline"
+       diesel: "Diesel"
+     age_of_car: "Car age"
+     car_price_abroad: "Car price abroad"
+     engine_volume: "Engine volume"
+     final_car_cost: "Final car cost:"
+     total_cost_of_customs_duties: "Total cost of customs payments:"
+     import_duty: "Import duty:"
+     excise_tax: "Excise tax:"
+     vat: "VAT:"
+   link_to_details: "More about calculator"
