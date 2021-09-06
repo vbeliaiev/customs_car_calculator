@@ -2,6 +2,8 @@ require 'sinatra/base'
 require 'sinatra/asset_pipeline'
 require 'net/http'
 require 'nokogiri'
+require 'i18n'
+require 'pry'
 
 class CustomsCarCalculator < Sinatra::Base
   register Sinatra::AssetPipeline
@@ -17,11 +19,41 @@ class CustomsCarCalculator < Sinatra::Base
 
   set :views, settings.root + '/templates'
 
+  I18n.load_path << settings.root + "/config/locales" + "/en.yml"
+  I18n.load_path << settings.root + "/config/locales" + "/ru.yml"
+  I18n.load_path << settings.root + "/config/locales" + "/ua.yml"
+  I18n.default_locale = :ua # (note that `en` is already the default!)
+
   get '/', provides: 'html' do
+    # I18n.default_locale
+    @usd_rate = CurrencyService.call
+    slim :index
+
+  end
+
+  get '/:locale', provides: 'html' do
+    if I18n.available_locales.include?(params[:locale].to_sym)
+      I18n.locale = params[:locale].to_sym
+    else
+      I18n.locale = I18n.default_locale
+    end
+
     @usd_rate = CurrencyService.call
     slim :index
   end
-  
+
+#  get '/ua', provides: 'html' do
+#    I18n.locale = :ua
+#    @usd_rate = CurrencyService.call
+#    slim :index
+#  end
+
+#  get '/ru', provides: 'html' do
+#    I18n.locale = :ru
+#    @usd_rate = CurrencyService.call
+#    slim :index
+#  end
+
   run! if app_file == $0
 end
 
