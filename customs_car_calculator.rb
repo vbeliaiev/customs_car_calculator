@@ -16,44 +16,46 @@ class CustomsCarCalculator < Sinatra::Base
     sprockets.append_path File.join(root, 'vendor', 'assets', 'bootstrap5')
   end
 
+  %w[ru en ua].each do |language|
+    I18n.load_path << settings.root + "/config/locales/#{language}.yml"
+  end
+
+  I18n.default_locale = :ua
+
   set :views, settings.root + '/templates'
 
-  I18n.load_path << settings.root + "/config/locales" + "/en.yml"
-  I18n.load_path << settings.root + "/config/locales" + "/ru.yml"
-  I18n.load_path << settings.root + "/config/locales" + "/ua.yml"
-  I18n.default_locale = :ua # (note that `en` is already the default!)
-
   get '/', provides: 'html' do
-    # I18n.default_locale
-    @usd_rate = CurrencyService.call
-    slim :index
-
+    set_locale
+    set_current_usd_rate
+    slim :index, layout: :layout
   end
 
   get '/:locale', provides: 'html' do
-    if I18n.available_locales.include?(params[:locale].to_sym)
+    set_locale
+    set_current_usd_rate
+    slim :index, layout: :layout
+  end
+
+  get '/:locale/about', provides: 'html' do
+    set_locale
+    slim "about_#{I18n.locale}".to_sym, layout: :layout
+  end
+
+  run! if app_file == $0
+
+  private
+
+  def set_current_usd_rate
+    @usd_rate = CurrencyService.call
+  end
+
+  def set_locale
+    if I18n.available_locales.include?(params[:locale]&.to_sym)
       I18n.locale = params[:locale].to_sym
     else
       I18n.locale = I18n.default_locale
     end
-
-    @usd_rate = CurrencyService.call
-    slim :index
   end
-
-#  get '/ua', provides: 'html' do
-#    I18n.locale = :ua
-#    @usd_rate = CurrencyService.call
-#    slim :index
-#  end
-
-#  get '/ru', provides: 'html' do
-#    I18n.locale = :ru
-#    @usd_rate = CurrencyService.call
-#    slim :index
-#  end
-
-  run! if app_file == $0
 end
 
 class CurrencyService

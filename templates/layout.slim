@@ -1,0 +1,42 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+    meta content="Customs Car Calculator" name="description" /
+    meta content="Vladyslav Beliaiev" name="author" /
+    link rel="stylesheet" href="#{stylesheet_path 'application'}"
+    script src="#{javascript_path 'application'}"
+    link href="#{image_path 'favicon'}" rel=("shortcut icon") type="image/x-icon" /
+    title = "Auto Calc - Калькулятор растаможки авто #{DateTime.now.year}"
+  body
+    header.container-fluid
+      .row
+        .col-lg-3
+        .col-lg-6.calculator.border.border-bottom-0
+          .row
+            .col-lg-12.d-flex.justify-content-end
+              span
+                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'ua')}" ua
+                span &nbsp;|&nbsp;
+              span
+                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'ru')}" ru
+                span &nbsp;|&nbsp;
+              span
+                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'en')}" en
+          .row
+            .col-sm-12.py-2
+              h4 = "Калькулятор растаможки авто в Украине #{DateTime.now.year}"
+    #usd_rate style=("display: none;") = @usd_rate
+    main.container-fluid
+      == yield
+    footer
+      .container-fluid
+        .row
+          .col-lg-3
+          .col-lg-6.bg-white.border.border-top-0
+            .col-lg-12.d-flex.justify-content-center
+              a href= "/#{I18n.locale}/about" Подробнее о калькуляторе
+            .col-lg-12.d-flex.justify-content-center
+              span = "© #{DateTime.now.year}"
