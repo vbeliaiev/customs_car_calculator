@@ -27,7 +27,7 @@ html lang="en"
                 a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'en')}" en
           .row
             .col-sm-12.py-2
-              h4 = "Калькулятор растаможки авто в Украине #{DateTime.now.year}"
+              h4 = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
     #usd_rate style=("display: none;") = @usd_rate
     main.container-fluid
       == yield
@@ -37,6 +37,6 @@ html lang="en"
           .col-lg-3
           .col-lg-6.bg-white.border.border-top-0
             .col-lg-12.d-flex.justify-content-center
-              a href= "/#{I18n.locale}/about" Подробнее о калькуляторе
+              a href= "/#{I18n.locale}/about" #{I18n.t(:link_to_details)}
             .col-lg-12.d-flex.justify-content-center
               span = "© #{DateTime.now.year}"
