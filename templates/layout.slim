@@ -18,18 +18,18 @@ html lang="en"
           .row
             .col-lg-12.d-flex.justify-content-end
               span
-                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'ua')}" ua
+                a href= "#{localized_url(request.path_info, 'ua')}" ua
                 span &nbsp;|&nbsp;
               span
-                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'ru')}" ru
+                a href= "#{localized_url(request.path_info, 'ru')}" ru
                 span &nbsp;|&nbsp;
               span
-                a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'en')}" en
+                a href= "#{localized_url(request.path_info, 'en')}" en
           .row
             .col-lg-12.py-2
-              a href= "/"
+              a href= "/#{I18n.locale}"
                 img.logo alt="logo" src="#{image_path 'logo'}" /
-              h4.ps-2 = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
+              p.h4.title-text = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
     #usd_rate style=("display: none;") = @usd_rate
     main.container-fluid
       == yield

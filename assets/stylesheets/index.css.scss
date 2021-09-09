@@ -2,10 +2,12 @@ body {
   background: azure;
 
   header {
-    .logo {
+    img.logo {
       width: 20%;
       float: left;
-
+    }
+    .title-text {
+      margin-left: 23%;
     }
   }
   .calculator {

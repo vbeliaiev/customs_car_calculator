@@ -30,6 +30,12 @@ class CustomsCarCalculator < Sinatra::Base
     slim :index, layout: :layout
   end
 
+  get '/:locale/', provides: 'html' do
+    set_locale
+    set_current_usd_rate
+    slim :index, layout: :layout
+  end
+
   get '/:locale', provides: 'html' do
     set_locale
     set_current_usd_rate
@@ -55,6 +61,15 @@ class CustomsCarCalculator < Sinatra::Base
     else
       I18n.locale = I18n.default_locale
     end
+  end
+
+  def localized_url(path, locale = I18n.default_locale)
+    if path =~ %r{ua|ru|en}
+      request.path_info.gsub(%r{ua|ru|en}, locale)
+    else
+      locale + path
+    end
+
   end
 end
 
