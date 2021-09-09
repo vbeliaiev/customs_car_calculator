@@ -10,7 +10,7 @@ html lang="en"
     script src="#{javascript_path 'application'}"
     link href="#{image_path 'favicon'}" rel=("shortcut icon") type="image/x-icon" /
     title = "Auto Calc - Калькулятор растаможки авто #{DateTime.now.year}"
-  body
+  body.bg-light
     header.container-fluid
       .row
         .col-lg-3
@@ -26,8 +26,10 @@ html lang="en"
               span
                 a href= "#{request.path_info.gsub(%r{ua|ru|en}, 'en')}" en
           .row
-            .col-sm-12.py-2
-              h4 = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
+            .col-lg-12.py-2
+              a href= "/"
+                img.logo alt="logo" src="#{image_path 'logo'}" /
+              h4.ps-2 = "#{I18n.t("calculator.title")} #{DateTime.now.year}"
     #usd_rate style=("display: none;") = @usd_rate
     main.container-fluid
       == yield
